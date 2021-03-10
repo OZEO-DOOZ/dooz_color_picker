@@ -87,6 +87,14 @@ class _GradientSliderState extends State<GradientSlider> {
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
+          boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: Offset(0, 2),
+                  blurRadius: 10,
+                  spreadRadius: 1,
+                )
+              ],
             borderRadius: BorderRadius.all(Radius.circular(widget.height / 2)),
             gradient: LinearGradient(colors: widget.colors)),
       ),
@@ -107,8 +115,7 @@ class _GradientSliderState extends State<GradientSlider> {
     RenderBox box = context.findRenderObject();
     Offset localPosition = box.globalToLocal(globalPosition);
     double percent;
-    // if (localPosition.dx > (widget.width + widget.thumbWidth)) return;
-    percent = (localPosition.dx - widget.thumbWidth / 2) / widget.width;
+    percent = localPosition.dx / (widget.width);
     percent = min(max(0.0, percent), 1.0);
     setState(() {
       this.percent = percent;

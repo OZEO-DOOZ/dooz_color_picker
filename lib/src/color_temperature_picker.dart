@@ -202,53 +202,53 @@ class _TemperaturePickerState extends State<CircleTemperaturePicker> {
     }
     return returnValue;
   }
+}
 
-  Color getColorFromKelvin(int k) {
-    double tmpCalc;
-    double tmpKelvin = k.toDouble();
-    if (tmpKelvin < 1000) tmpKelvin = 1000;
-    if (tmpKelvin > 40000) tmpKelvin = 40000;
-    tmpKelvin = tmpKelvin / 100;
+Color getColorFromKelvin(int k) {
+  double tmpCalc;
+  double tmpKelvin = k.toDouble();
+  if (tmpKelvin < 1000) tmpKelvin = 1000;
+  if (tmpKelvin > 40000) tmpKelvin = 40000;
+  tmpKelvin = tmpKelvin / 100;
 
-    // Red
-    double r;
-    if (tmpKelvin <= 66) {
-      r = 255;
-    } else {
-      tmpCalc = tmpKelvin - 60;
-      tmpCalc = 329.698727446 * pow(tmpCalc, -0.1332047592);
-      r = tmpCalc;
-      if (r < 0) r = 0;
-      if (r > 255) r = 255;
-    }
-    // Green
-    double g;
-    if (tmpKelvin <= 66) {
-      tmpCalc = tmpKelvin;
-      tmpCalc = 99.4708025861 * log(tmpCalc) - 161.1195681661;
-      g = tmpCalc;
-      if (g < 0) g = 0;
-      if (g > 255) g = 255;
-    } else {
-      tmpCalc = tmpKelvin - 60;
-      tmpCalc = 288.1221695283 * pow(tmpCalc, -0.0755148492);
-      g = tmpCalc;
-      if (g < 0) g = 0;
-      if (g > 255) g = 255;
-    }
-// Blue
-    double b;
-    if (tmpKelvin >= 66) {
-      b = 255;
-    } else if (tmpKelvin <= 19) {
-      b = 0;
-    } else {
-      tmpCalc = tmpKelvin - 10;
-      tmpCalc = 138.5177312231 * log(tmpCalc) - 305.0447927307;
-      b = tmpCalc;
-      if (b < 0) b = 0;
-      if (b > 255) b = 255;
-    }
-    return Color.fromRGBO(r.toInt(), g.toInt(), b.toInt(), 1);
+  // Red
+  double r;
+  if (tmpKelvin <= 66) {
+    r = 255;
+  } else {
+    tmpCalc = tmpKelvin - 60;
+    tmpCalc = 329.698727446 * pow(tmpCalc, -0.1332047592);
+    r = tmpCalc;
+    if (r < 0) r = 0;
+    if (r > 255) r = 255;
   }
+  // Green
+  double g;
+  if (tmpKelvin <= 66) {
+    tmpCalc = tmpKelvin;
+    tmpCalc = 99.4708025861 * log(tmpCalc) - 161.1195681661;
+    g = tmpCalc;
+    if (g < 0) g = 0;
+    if (g > 255) g = 255;
+  } else {
+    tmpCalc = tmpKelvin - 60;
+    tmpCalc = 288.1221695283 * pow(tmpCalc, -0.0755148492);
+    g = tmpCalc;
+    if (g < 0) g = 0;
+    if (g > 255) g = 255;
+  }
+// Blue
+  double b;
+  if (tmpKelvin >= 66) {
+    b = 255;
+  } else if (tmpKelvin <= 19) {
+    b = 0;
+  } else {
+    tmpCalc = tmpKelvin - 10;
+    tmpCalc = 138.5177312231 * log(tmpCalc) - 305.0447927307;
+    b = tmpCalc;
+    if (b < 0) b = 0;
+    if (b > 255) b = 255;
+  }
+  return Color.fromRGBO(r.toInt(), g.toInt(), b.toInt(), 1);
 }
