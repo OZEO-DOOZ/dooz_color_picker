@@ -27,17 +27,15 @@ class GradientSlider extends StatefulWidget {
   final int initValue;
 
   GradientSlider({
-    Key key,
+    Key? key,
     this.colors = const [Colors.white, Colors.black],
     this.width = 200,
     this.height = 16,
     this.thumbWidth = 20,
     this.thumbColor = Colors.white,
     this.initValue = 50,
-    @required this.onChange,
-  })  : assert(width != null),
-        assert(initValue >= 0 && initValue <= 100),
-        assert(onChange != null),
+    required this.onChange,
+  })  : assert(initValue >= 0 && initValue <= 100),
         super(key: key);
 
   @override
@@ -55,7 +53,7 @@ class _GradientSliderState extends State<GradientSlider> {
 
   @override
   Widget build(BuildContext context) {
-    double thumbLeft, thumbTop;
+    double thumbLeft;
     thumbLeft = (widget.width - widget.thumbWidth) * percent;
 
     Widget frame = Container(width: widget.width, height: widget.thumbWidth);
@@ -63,7 +61,6 @@ class _GradientSliderState extends State<GradientSlider> {
     // build thumb
     Widget thumb = Positioned(
         left: thumbLeft,
-        top: thumbTop,
         child: Container(
           width: widget.thumbWidth,
           height: widget.thumbWidth,
@@ -87,14 +84,14 @@ class _GradientSliderState extends State<GradientSlider> {
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
-          boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 2),
-                  blurRadius: 10,
-                  spreadRadius: 1,
-                )
-              ],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                offset: Offset(0, 2),
+                blurRadius: 10,
+                spreadRadius: 1,
+              )
+            ],
             borderRadius: BorderRadius.all(Radius.circular(widget.height / 2)),
             gradient: LinearGradient(colors: widget.colors)),
       ),
@@ -112,7 +109,7 @@ class _GradientSliderState extends State<GradientSlider> {
 
   /// calculate colors picked from palette and update our states.
   void handleTouch(Offset globalPosition, BuildContext context) {
-    RenderBox box = context.findRenderObject();
+    RenderBox box = context.findRenderObject() as RenderBox;
     Offset localPosition = box.globalToLocal(globalPosition);
     double percent;
     percent = localPosition.dx / (widget.width);

@@ -6,15 +6,15 @@ class CircleProgressBarPainter extends CustomPainter {
   final List<Color> foregroundColors;
 
   CircleProgressBarPainter({
-    @required this.foregroundColors,
-    double strokeWidth,
+    required this.foregroundColors,
+    double? strokeWidth,
   }) : this.strokeWidth = strokeWidth ?? 6;
 
   @override
   void paint(Canvas canvas, Size size) {
     final Offset center = size.center(Offset.zero);
     final Size constrainedSize =
-        size - Offset(this.strokeWidth, this.strokeWidth);
+        Size(size.width - strokeWidth, size.height - strokeWidth);
     final shortestSide = min(constrainedSize.width, constrainedSize.height);
     final radius = (shortestSide / 2);
     Rect rect = Rect.fromCircle(center: center, radius: radius);
