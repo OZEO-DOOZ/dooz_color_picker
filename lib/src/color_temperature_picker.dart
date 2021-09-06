@@ -32,10 +32,10 @@ class CircleTemperaturePicker extends StatefulWidget {
   final int initialTemperature;
 
   /// Child widget
-  final Widget child;
+  final Widget? child;
 
   CircleTemperaturePicker(
-      {Key key,
+      {Key? key,
       this.radius = 160,
       this.thumbRadius = 8,
       this.initialTemperature = 2600,
@@ -43,10 +43,8 @@ class CircleTemperaturePicker extends StatefulWidget {
       this.startTemperature = 2600,
       this.endTemperature = 10600,
       this.child,
-      @required this.colorListener})
-      : assert(radius != null),
-        assert(colorListener != null),
-        assert(startTemperature > 1500),
+      required this.colorListener})
+      : assert(startTemperature > 1500),
         assert(endTemperature < 40000),
         assert(initialTemperature >= startTemperature &&
             initialTemperature <= endTemperature),
@@ -61,9 +59,9 @@ class CircleTemperaturePicker extends StatefulWidget {
 class _TemperaturePickerState extends State<CircleTemperaturePicker> {
   List<Color> colors = [];
 
-  double thumbDistanceToCenter;
-  double thumbRadians;
-  int colorIndex;
+  late double thumbDistanceToCenter;
+  late double thumbRadians;
+  late int colorIndex;
 
   @override
   void initState() {
@@ -157,7 +155,7 @@ class _TemperaturePickerState extends State<CircleTemperaturePicker> {
 
   /// calculate colors picked from palette and update our states.
   void handleTouch(Offset globalPosition, BuildContext context) {
-    RenderBox box = context.findRenderObject();
+    RenderBox box = context.findRenderObject() as RenderBox;
     Offset localPosition = box.globalToLocal(globalPosition);
     final double centerX = box.size.width / 2;
     final double centerY = box.size.height / 2;

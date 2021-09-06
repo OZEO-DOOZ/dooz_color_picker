@@ -25,19 +25,17 @@ class CircleColorPicker extends StatefulWidget {
   final Color initialColor;
 
   /// Child widget
-  final Widget child;
+  final Widget? child;
 
-  CircleColorPicker(
-      {Key key,
-      this.radius = 160,
-      this.initialColor = const Color(0xffff0000),
-      this.thumbStrokeColor = Colors.white,
-      this.thumbRadius = 8,
-      this.child,
-      @required this.colorListener})
-      : assert(radius != null),
-        assert(colorListener != null),
-        super(key: key);
+  CircleColorPicker({
+    Key? key,
+    this.radius = 160,
+    this.initialColor = const Color(0xffff0000),
+    this.thumbStrokeColor = Colors.white,
+    this.thumbRadius = 8,
+    this.child,
+    required this.colorListener,
+  }) : super(key: key);
 
   @override
   State<CircleColorPicker> createState() {
@@ -73,9 +71,9 @@ class _CircleColorPickerState extends State<CircleColorPicker> {
     Color(0xffff0040),
   ];
 
-  double thumbDistanceToCenter;
-  double thumbRadians;
-  Color color;
+  late double thumbDistanceToCenter;
+  late double thumbRadians;
+  late Color color;
 
   @override
   void initState() {
@@ -161,7 +159,7 @@ class _CircleColorPickerState extends State<CircleColorPicker> {
 
   /// calculate colors picked from palette and update our states.
   void handleTouch(Offset globalPosition, BuildContext context) {
-    RenderBox box = context.findRenderObject();
+    RenderBox box = context.findRenderObject() as RenderBox;
     Offset localPosition = box.globalToLocal(globalPosition);
     final double centerX = box.size.width / 2;
     final double centerY = box.size.height / 2;

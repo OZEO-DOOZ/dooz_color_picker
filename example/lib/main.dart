@@ -10,11 +10,11 @@ class ColorPickerApp extends StatefulWidget {
 }
 
 class _ColorPickerAppState extends State<ColorPickerApp> {
-  Color pickerColor;
+  Color? pickerColor;
 
   //
-  Color kelvinColor;
-  int kelvinValue;
+  Color? kelvinColor;
+  int? kelvinValue;
 
   @override
   Widget build(BuildContext context) {
