@@ -1,8 +1,9 @@
 name: dooz_color_picker
 description: A Flutter package that provides widgets to enable a user to select a color and some other params of a RGB light using circular sliders.
 version: 0.1.0
-author: DOOZ Domotique
 homepage: https://www.dooz-domotique.com
+repository: https://github.com/OZEO-DOOZ/dooz_color_picker
+issue_tracker: https://github.com/OZEO-DOOZ/dooz_color_picker/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
