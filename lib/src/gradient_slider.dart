@@ -26,7 +26,7 @@ class GradientSlider extends StatefulWidget {
   /// init value
   final int initValue;
 
-  GradientSlider({
+  const GradientSlider({
     Key? key,
     this.colors = const [Colors.white, Colors.black],
     this.width = 200,
@@ -56,7 +56,7 @@ class _GradientSliderState extends State<GradientSlider> {
     double thumbLeft;
     thumbLeft = (widget.width - widget.thumbWidth) * percent;
 
-    Widget frame = Container(width: widget.width, height: widget.thumbWidth);
+    Widget frame = SizedBox(width: widget.width, height: widget.thumbWidth);
 
     // build thumb
     Widget thumb = Positioned(
@@ -68,7 +68,7 @@ class _GradientSliderState extends State<GradientSlider> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.5),
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                   blurRadius: 10,
                   spreadRadius: 1,
                 )
@@ -87,7 +87,7 @@ class _GradientSliderState extends State<GradientSlider> {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.2),
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
                 blurRadius: 10,
                 spreadRadius: 1,
               )

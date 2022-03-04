@@ -27,7 +27,7 @@ class CircleColorPicker extends StatefulWidget {
   /// Child widget
   final Widget? child;
 
-  CircleColorPicker({
+  const CircleColorPicker({
     Key? key,
     this.radius = 160,
     this.initialColor = const Color(0xffff0000),
@@ -106,7 +106,7 @@ class _CircleColorPickerState extends State<CircleColorPicker> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                   blurRadius: 10,
                   spreadRadius: 1,
                 )
@@ -134,7 +134,7 @@ class _CircleColorPickerState extends State<CircleColorPicker> {
                 height: radius * 2,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(radius)),
-                    gradient: SweepGradient(colors: colors)),
+                    gradient: const SweepGradient(colors: colors)),
               ),
             ),
             Positioned(
