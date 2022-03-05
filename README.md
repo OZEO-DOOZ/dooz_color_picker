@@ -1,6 +1,6 @@
 # dooz_color_picker
 
-Dooz color picker
+A Flutter package that provides widgets to enable a user to select a color and some other params of a RGB light using circular sliders.
 
 ## Getting Started
 ```dart
