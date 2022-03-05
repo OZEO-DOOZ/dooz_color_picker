@@ -34,7 +34,7 @@ class CircleTemperaturePicker extends StatefulWidget {
   /// Child widget
   final Widget? child;
 
-  CircleTemperaturePicker(
+  const CircleTemperaturePicker(
       {Key? key,
       this.radius = 160,
       this.thumbRadius = 8,
@@ -99,7 +99,7 @@ class _TemperaturePickerState extends State<CircleTemperaturePicker> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                   blurRadius: 10,
                   spreadRadius: 1,
                 )
@@ -137,6 +137,7 @@ class _TemperaturePickerState extends State<CircleTemperaturePicker> {
             Positioned(
               left: thumbRadius,
               top: thumbRadius,
+              // ignore: sized_box_for_whitespace
               child: Container(
                 width: radius * 2,
                 height: radius * 2,
